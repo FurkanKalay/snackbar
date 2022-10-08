@@ -1,38 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <title>Document</title>
-</head>
+include 'navigatie.php';
+include 'database.php';
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
+
+
+
+$sql = "SELECT name, cost_price, category   FROM product";
+
+if ($result = mysqli_query($conn, $sql)) {
+    $melding = mysqli_fetch_all($result, MYSQLI_ASSOC);
+}
+
+
+?>
+
+<div class="container py-5 px-5">
+
+    <div class="row py-5 px-5">
+
+        <div class="col py-5 px-5">
+
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th>naam</th>
+                        <th>cost_price</th>
+                        <th>category</th>
+                      
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($melding as $mel) : ?>
+                        <tr>
+                            <td><?php echo $mel["name"] ?></td>
+                            <td><?php echo $mel["cost_price"] ?></td>
+                            <td><?php echo $mel["category"] ?></td>
+                    
+
+                            <td><a href="meldingen-delete.php?id=<?php echo $mel["id"] ?>" class="btn btn-danger">Bestel</a></td>
+                        
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
-    </nav>
-</body>
-
-</html>
+    </div>
+</div>
