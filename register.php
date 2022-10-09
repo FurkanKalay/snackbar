@@ -26,7 +26,7 @@ if (isset($_POST["submit"])) { // als submit gevult is en niet staat aan NULL vo
         include 'database.php';
 
 
-        $sql = "INSERT INTO gebruikers (voornaam, achternaam, email, wachtwoord, telefoonnummer, geboortedatum, rol)
+        $sql = "INSERT INTO user (voornaam, achternaam, email, wachtwoord, telefoonnummer, geboortedatum, rol)
                 VALUES ('$voornaam', '$achternaam','$email', '$wachtwoord', '$telefoonnummer','$geboortedatum','$rol')";
 
         // Voer de INSERT INTO STATEMENT uit/ execute de query in het database
@@ -47,27 +47,34 @@ include "navigatie.php"; ?>
             <form class="py-5 px-5 " method="POST" action="register.php">
                 <div class="form-group">
                     <label for="exampleInputUser1">Name</label>
-                    <input type="text" class="form-control" id="voornaam" name="voornaam" aria-describedby="userHelp" placeholder="Enter Username">
+                    <input type="text" class="form-control" id="voornaam" name="voornaam" aria-describedby="userHelp"
+                        placeholder="Enter Username">
 
                 </div>
                 <div class="form-group">
                     <label for="exampleInputUser1">Surname</label>
-                    <input type="text" class="form-control" id="achternaam" name="achternaam" aria-describedby="userHelp" placeholder="Enter Username">
+                    <input type="text" class="form-control" id="achternaam" name="achternaam"
+                        aria-describedby="userHelp" placeholder="Enter Username">
 
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyon else.</small>
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                        placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyon
+                        else.</small>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Phonenumber</label>
-                    <input type="text" class="form-control" id="telefoonnummer" name="telefoonnummer" aria-describedby="emailHelp" placeholder="Enter email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyon else.</small>
+                    <input type="text" class="form-control" id="telefoonnummer" name="telefoonnummer"
+                        aria-describedby="emailHelp" placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyon
+                        else.</small>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="wachtwoord" name="wachtwoord" placeholder="Password">
+                    <input type="password" class="form-control" id="wachtwoord" name="wachtwoord"
+                        placeholder="Password">
                 </div>
 
                 <div class="bootstrap-iso">
@@ -80,7 +87,8 @@ include "navigatie.php"; ?>
                                     <div class="form-group">
                                         <!-- Date input -->
                                         <label class="control-label" for="date">Date</label>
-                                        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="date" />
+                                        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY"
+                                            type="date" />
                                     </div>
                                     <div class="form-group py-5">
                                         <!-- Submit button -->
@@ -94,7 +102,8 @@ include "navigatie.php"; ?>
                     </div>
                 </div>
                 <div class="link">
-                    Already have a account? Log in <a href="http://localhost/eindproject/login.php" class="link-primary">here.</a>
+                    Already have a account? Log in <a href="http://localhost/eindproject/login.php"
+                        class="link-primary">here.</a>
                 </div>
 
             </form>
@@ -110,15 +119,15 @@ include "navigatie.php"; ?>
 </div>
 
 <script>
-    $(document).ready(function() {
-        var date_input = $('input[name="date"]'); //our date input has the name "date"
-        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-        var options = {
-            format: 'mm/dd/yyyy',
-            container: container,
-            todayHighlight: true,
-            autoclose: true,
-        };
-        date_input.datepicker(options);
-    })
+$(document).ready(function() {
+    var date_input = $('input[name="date"]'); //our date input has the name "date"
+    var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+    var options = {
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+    };
+    date_input.datepicker(options);
+})
 </script>
